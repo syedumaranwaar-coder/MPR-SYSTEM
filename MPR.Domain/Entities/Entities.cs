@@ -117,6 +117,7 @@ public class AttendanceRecord
     /// need their image retained long-term (see ExtractionCellSample).
     /// </summary>
     public Dictionary<int, byte[]>? WeekCellImages { get; set; }
+}
 
 /// <summary>
 /// Computed "No. Of Std Present" row per grade+subject-category block,
