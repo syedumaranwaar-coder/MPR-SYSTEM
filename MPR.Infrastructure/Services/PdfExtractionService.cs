@@ -5,6 +5,7 @@ using MPR.Domain.Entities;
 using MPR.Infrastructure.Services.Ocr;
 using OpenCvSharp;
 using Tesseract;
+using Rect = OpenCvSharp.Rect;
 
 namespace MPR.Infrastructure.Services;
 
