@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: mpr-system
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mpr-db
+          property: connectionString
+      - key: JWT__KEY
+        generateValue: true
+      - key: JWT__ISSUER
+        value: MPRSystem
+      - key: JWT__AUDIENCE
+        value: MPRSystem.Clients
+      - key: JWT__EXPIRYMINUTES
+        value: "480"
+      - key: CHATPROVIDER__BASEURL
+        value: https://api.groq.com
+      - key: CHATPROVIDER__MODEL
+        value: llama-3.1-8b-instant
+      - key: CHATPROVIDER__APIKEY
+        sync: false   # set manually in Render dashboard after creating a free Groq API key
+      - key: SMTP__HOST
+        value: smtp.office365.com
+      - key: SMTP__PORT
+        value: "587"
+      - key: SMTP__USER
+        sync: false
+      - key: SMTP__PASSWORD
+        sync: false
+      - key: SMTP__FROMDISPLAYNAME
+        value: MPR Reporting System
+
+databases:
+  - name: mpr-db
+    plan: free
